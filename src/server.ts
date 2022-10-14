@@ -22,7 +22,9 @@ const generateFile = (code:string,ext:string) => {
     }
 }
 
-
+app.get("/",(req:Express.Request,res:Express.Response)=>{
+    res.send("Hello world")
+})
 app.post("/lint",(req:Express.Request,res:Express.Response)=>{
             const language = req.body.language
             //@ts-ignore
