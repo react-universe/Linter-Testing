@@ -1,0 +1,31 @@
+{
+  "name": "multilint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server",
+  "scripts": {
+    "start": "ts-node-esm ./src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://reactverse: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@github.com/react-universe/Multi-linter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/react-universe/Multi-linter/issues"
+  },
+  "homepage": "https://github.com/react-universe/Multi-linter#readme",
+  "dependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.8.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "pyright": "^1.1.275",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
