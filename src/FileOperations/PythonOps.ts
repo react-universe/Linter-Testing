@@ -23,14 +23,14 @@ const ErrorCapture = (ErrorText:string) => {
             if(it.match(/(error|warning):/) !== null){
                 const splitted = it.split("-")
                 splitted.forEach((ix,ind) => {
-                    if(ind === 0){
+                    if(ind === splitted.length-2){
                         const alint = ix.split(":")
                         arrofline.push({
                             Line : alint[alint.length-2],
                             StartIndex : alint[alint.length-1]
                         })
                     }
-                    if(ind === 1){
+                    if(ind === splitted.length-1){
                         const alint = ix.split(":")
                         arrofsev.push({
                             severity : alint[0],

@@ -22,27 +22,37 @@ const generateFile = (code:string,ext:string) => {
     }
 }
 
+
 app.get("/",(req:Express.Request,res:Express.Response)=>{
-    res.send("Hello world test 1")
+    res.send("Kodezi Linter test")
 })
-app.post("/lint",(req:Express.Request,res:Express.Response)=>{
+
+
+
+app.post("/lint",async(req:Express.Request,res:Express.Response)=>{
             const language = req.body.language
-            //@ts-ignore
-            const GenFile = generateFile(req.body.code,ExtensionList[language])
-            if(GenFile === "error"){
-                res.json("failed")
-            }
-            //@ts-ignore
-            exec(ErrorCommand(GenFile)[req.body.language],(err,stdout,stderr)=>{
+            if(language === "python"){
                 //@ts-ignore
-                exec(`npx rimraf ./LintFolder/${GenFile}.${ExtensionList[language]}`)
-                if(stdout){
-                    res.json(ErrorLintList.python(stdout))
+                const GenFile = generateFile(req.body.code,ExtensionList[language])
+                if(GenFile === "error"){
+                    res.json("failed")
                 }
-                else if(err){
-                    res.status(403).json("Something Wrong")
-                }
-            })
+                //@ts-ignore
+                exec(ErrorCommand(GenFile)[req.body.language],(err,stdout,stderr)=>{
+                    //@ts-ignore
+                    exec(`npx rimraf ./LintFolder/${GenFile}.${ExtensionList[language]}`)
+                    if(stdout){
+                        res.json(ErrorLintList.python(stdout))
+                    }
+                    else if(err){
+                        res.status(403).json("Something Wrong")
+                    }
+                })
+            }else if(language === "java"){
+                    const filename = generateFile(req.body.code,"java")
+                    fs.writeFileSync("filename.txt",filename,{encoding:"utf8",flag:"w"})
+                    ErrorLintList.java(res,req.body.code,filename)
+            }
 })
 
 //@ts-ignore

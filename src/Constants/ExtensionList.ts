@@ -1,3 +1,4 @@
 export default {
-    python : "py"
+    python : "py",
+    java : "java"
 }
