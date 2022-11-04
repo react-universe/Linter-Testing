@@ -26,7 +26,7 @@ const SetAstArr = (filename) => {
     
     const ClassFunNames = []
     
-    art.forEach((i)=>{
+    art?.forEach((i)=>{
         if(i.text.length > 1){
             const vax = i.text.replace(/(?:\/\/.*)|(\/\*(?:.|[\n\r])*?\*\/)/,"")
             const gh = vax.match(/[\w\s]+=/g)

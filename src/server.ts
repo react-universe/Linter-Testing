@@ -28,7 +28,6 @@ app.get("/",(req:Express.Request,res:Express.Response)=>{
 })
 
 
-
 app.post("/lint",async(req:Express.Request,res:Express.Response)=>{
             const language = req.body.language
             if(language === "python"){
